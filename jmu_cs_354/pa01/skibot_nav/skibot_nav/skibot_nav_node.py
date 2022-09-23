@@ -4,6 +4,7 @@ import rclpy
 import rclpy.node
 
 from skibot_interfaces.msg import Pose
+from skibot_nav_interfaces.srv import SkibotToPoint
 from geometry_msgs.msg import Point
 from geometry_msgs.msg import Wrench
 from geometry_msgs.msg import Vector3
@@ -24,6 +25,8 @@ class SkibotNavNode(rclpy.node.Node):
         self.target_pub = self.create_publisher(Point, "target_point", 10)
         self.target_pub.publish(self.target)
 
+        self.at_target = False
+
         p_gain = 1.0
         i_gain = 0
         d_gain = 0.5
@@ -35,8 +38,28 @@ class SkibotNavNode(rclpy.node.Node):
         self.pid_y.reset()
         self.pid_theta.reset()
 
-        # for testing purposes
         self.create_subscription(Pose, "pose", self.pose_callback, 10)
+        
+        # add service server
+        self.nav_srv = self.create_service(SkibotToPoint, "move_skibot_to_point", self.move_service_callback)
+
+    def move_service_callback(self, request, response):
+        if (request.goal_x < 0.0 or request.goal_x > 4.0) or (request.goal_y < 0.0 or request.goal_y > 4.0):
+            response.success = False
+            return response
+        else:
+            new_target = Point()
+            new_target.x = request.goal_x
+            new_target.y = request.goal_y
+            self.target = new_target
+            self.target_pub.publish(self.target)
+
+            # # wait for goal to be reached
+            # while not self.at_target:
+            #     continue
+
+            response.success = True
+            return response
 
     def pose_callback(self, msg):
         # test something!
@@ -64,9 +87,9 @@ class SkibotNavNode(rclpy.node.Node):
             error_y = self.target.y - msg.y
             cmd_ctrl_y = self.pid_y.update_PID(error_y)
 
-            if abs(msg.x_velocity) <= 5.0:
+            if abs(msg.x_velocity) <= 2.0:
                 sample_force.x = cmd_ctrl_x
-            if abs(msg.y_velocity) <= 5.0:
+            if abs(msg.y_velocity) <= 2.0:
                 sample_force.y = cmd_ctrl_y
 
         sample_wrench = Wrench()
@@ -75,6 +98,12 @@ class SkibotNavNode(rclpy.node.Node):
         self.thrust_pub.publish(sample_wrench)
         # self.get_logger().info(f"Command for thrust-- x: {cmd_ctrl_x}  y: {cmd_ctrl_y}  theta: {cmd_ctrl_theta}")
         self.get_logger().info(f"Skibot location-- x: {msg.x}  y: {msg.y}")
+
+        distance_from_target = math.sqrt((msg.x - self.target.x) ** 2 + (msg.y - self.target.y) ** 2)
+        if distance_from_target <= 0.01 and msg.x_velocity < 0.01 and msg.y_velocity < 0.01:
+            self.at_target = True
+        else:
+            self.at_target = False
 
     def target_callback(self, msg):
         self.target = msg
