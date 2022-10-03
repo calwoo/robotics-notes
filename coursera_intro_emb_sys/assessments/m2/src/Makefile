@@ -9,33 +9,61 @@
 #
 #*****************************************************************************
 
-#------------------------------------------------------------------------------
-# <Put a Description Here>
-#
-# Use: make [TARGET] [PLATFORM-OVERRIDES]
-#
-# Build Targets:
-#      <Put a description of the supported targets here>
-#
-# Platform Overrides:
-#      <Put a description of the supported Overrides here
-#
-#------------------------------------------------------------------------------
 include sources.mk
 
-# Platform Overrides
-PLATFORM = 
+TARGET = c1m2
 
-# Architectures Specific Flags
-LINKER_FILE = 
-CPU = 
-ARCH = 
-SPECS = 
+ifeq ($(PLATFORM),HOST)
+	CPU = x86_64
 
-# Compiler Flags and Defines
-CC = 
-LD = 
-LDFLAGS = 
-CFLAGS = 
-CPPFLAGs = 
+else
+	LINKER_FILE = -T ../msp432p401r.lds
+	CPU = cortex-m4
+	ARCH = armv7e-m
+	SPECS = nosys.specs
 
+endif
+
+ifeq ($(PLATFORM),HOST)
+	CC = gcc
+	LDFLAGS = -Wl,-Map=$(TARGET).map
+	CFLAGS = -Wall -Werror -O0 -g -std=c99
+	CPPFLAGS = -M -MF test.d
+	DEFINEFLAG = -DHOST
+
+else
+	CC = arm-none-eabi-gcc
+	LD = arm-none-eabi-ld
+	LDFLAGS = -Wl,-Map=$(TARGET).map $(LINKER_FILE)
+	CFLAGS = -mcpu=$(CPU) -march=$(ARCH) --specs=$(SPECS) -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Wall -Werror -O0 -g -std=c99
+	CPPFLAGS = -M -MF test.d
+	DEFINEFLAG = -DMSP432
+
+endif
+
+OBJECTS = $(SOURCES:.c=.o)
+ASMS = $(SOURCES:.c=.s)
+PPS = $(SOURCES:.c=.i)
+MAPS = $(SOURCES:.c=.map)
+OUTPUTS = $(SOURCES:.c=.out)
+
+%.i: %.c
+	$(CC) $(CPPFLAGS) $(DEFINEFLAG) $<
+	$(CC) $(DEFINEFLAG) -E -o $@ $<
+
+%.o: %.c
+	$(CC) $(DEFINEFLAG) $(CFLAGS) -c $<
+
+.PHONY: compile-all
+compile-all: $(SOURCES)
+	$(CC) $(DEFINEFLAG) $(CFLAGS) -c $(SOURCES)
+
+.PHONY: build
+build: $(OUTPUTS)
+$(OUTPUTS): $(SOURCES)
+	$(CC) $(DEFINEFLAG) $(CFLAGS) $(LDFLAGS) $(INCLUDES) -o c1m2.out $^
+	size c1m2.out
+
+.PHONY: clean
+clean:
+	rm -f *.i *.d *.map *.s *.out *.o
