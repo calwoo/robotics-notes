@@ -4,3 +4,9 @@ build/
 install/
 log/
 .vscode/
+
+# TI CCS artifacts
+.jxbrowser.userdata/*
+dvt/
+RemoteSystemsTempFiles/
+.*/
