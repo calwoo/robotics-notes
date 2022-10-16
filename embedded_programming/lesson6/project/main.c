@@ -5,7 +5,7 @@
 #define LED_GREEN (1U << 3)
 
 int main() {
-   SYSCTL_RCGCGPIO_R = 0x20U; // turn on clock for GPIOF
+    SYSCTL_RCGCGPIO_R = 0x20U; // turn on clock for GPIOF
     GPIO_PORTF_DIR_R = 0x0EU; /* set pins 1, 2, 3 as outputs */
     GPIO_PORTF_DEN_R = 0x0EU; // set pins 1, 2, 3 as digital
 
