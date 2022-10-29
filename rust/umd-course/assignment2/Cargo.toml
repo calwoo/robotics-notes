@@ -1,0 +1,8 @@
+[package]
+name = "cmsc388z-snake-game"
+version = "0.1.0"
+authors = ["SLMT <sam123456777@gmail.com>", "Chase Kanipe <ckanipe@terpmail.umd.edu>"]
+
+[dependencies]
+piston_window = "0.120.0"
+rand = "0.3"
