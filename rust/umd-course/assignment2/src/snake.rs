@@ -102,21 +102,35 @@ impl Snake {
 
     /// Get the head position
     pub fn head_position(&self) -> (i32, i32) {
-        unimplemented!();
+        let top_block = self.body.front().unwrap();
+        (top_block.x, top_block.y)
     }
 
     /// Get the head direction
     pub fn head_direction(&self) -> Direction {
-        unimplemented!();
+        self.moving_direction
     }
 
     /// Increase the snake length
     pub fn increase_length(&mut self) {
-        unimplemented!();
+        if let Some(ref removed_blk) = self.last_removed_block {
+            self.body.push_back(Block {
+                x: removed_blk.x,
+                y: removed_blk.y
+            });
+        }
     }
 
     /// Return snake body as a linked list
     pub fn get_body(&self) -> LinkedList<Block> {
-        unimplemented!();
+        // return a clone
+        let mut ret_ll = LinkedList::new();
+        for block in self.body.iter() {
+            ret_ll.push_back(Block {
+                x: block.x,
+                y: block.y
+            });
+        }
+        return ret_ll;
     }
 }

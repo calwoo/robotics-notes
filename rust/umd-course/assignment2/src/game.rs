@@ -158,9 +158,9 @@ impl Game {
         self.foods.retain(|f| {
             if (f.x == x_head) && (f.y == y_head) {
                 increase_snake = true;
-                true
-            } else {
                 false
+            } else {
+                true
             }
         });
 
@@ -175,8 +175,8 @@ impl Game {
         let dir = self.snake.moving_direction;
 
         // check if head hits body
-        for block in self.snake.body.iter() {
-            if (last_x == block.x) && (last_y == block.y) {
+        for (idx, block) in self.snake.body.iter().enumerate() {
+            if (last_x == block.x) && (last_y == block.y) && (idx > 0) {
                 return false;
             }
         }
@@ -201,7 +201,7 @@ impl Game {
             },
         };
 
-        if (new_block.x < 0) || (new_block.y < 0) || (new_block.x > self.width) || (new_block.y > self.height) {
+        if (new_block.x < 0) || (new_block.y < 0) || (new_block.x >= self.width) || (new_block.y >= self.height) {
             return false;
         }
 
@@ -230,7 +230,7 @@ mod tests {
     fn test_wall_collision() {
         let mut game = Game::new(20, 20);
 
-        for _ in 0..14 {
+        for _ in 0..15 {
             game.update(1.0);
             assert_eq!(game.is_game_over, false);
         }
@@ -269,11 +269,9 @@ mod tests {
 
         game.update(1.0);
         assert_eq!(game.foods.len(), NUM_FOODS);
-
         game.foods.pop();
         game.foods.pop();
         assert_eq!(game.foods.len(), NUM_FOODS - 2);
-
         game.update(1.0);
         assert_eq!(game.foods.len(), NUM_FOODS);
     }
