@@ -1,3 +1,16 @@
 {
-    "image": "calwoo/ros2:humble"
+    "image": "calwoo/ros2:humble",
+    "runArgs": [
+        "--network=host",
+        "--volume=/tmp/.X11-unix:/tmp/.X11-unix"
+    ],
+    "containerEnv": {
+        "DISPLAY": "${localEnv:DISPLAY}",
+        "LIBGL_ALWAYS_SOFTWARE": "1"
+    },
+    "extensions": [
+		"ms-python.python",
+		"ms-vscode.cpptools",
+        "ms-vscode.cmake-tools"
+	]
 }

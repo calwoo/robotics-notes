@@ -13,7 +13,7 @@ RUN apt-get update && \
 ENV LANG en_US.UTF-8
 
 # ROS2 environment vars
-ENV ROS2_DISTRO="humble"
+ENV ROS_DISTRO="humble"
 ENV ROS_PYTHON_VERSION="3"
 ENV ROS_VERSION="2"
 
@@ -21,7 +21,15 @@ ENV ROS_VERSION="2"
 RUN apt-get update && \
     apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install tzdata && \
-    apt-get install -y ros-${ROS2_DISTRO}-desktop
+    apt-get install -y ros-${ROS_DISTRO}-desktop
+
+# install colcon build tool
+RUN apt-get install -y \
+    python3-argcomplete \
+    python3-rosdep \
+    python3-colcon-common-extensions
+
+ENV SHELL=/bin/bash
 
 # set development workspace
 WORKDIR /root/dev_ws/src
