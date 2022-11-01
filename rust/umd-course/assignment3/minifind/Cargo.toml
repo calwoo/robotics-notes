@@ -1,0 +1,22 @@
+[package]
+name = "minifind"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "minifind"
+path = "src/main.rs"
+
+
+[dependencies]
+regex = "1.5"
+slog = "2.7.0"
+slog-term = "2.8.0"
+
+[dependencies.clap]
+version = "3.0.0-beta.4"
+features = ["wrap_help"]
