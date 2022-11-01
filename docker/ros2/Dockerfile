@@ -30,6 +30,7 @@ WORKDIR /root/dev_ws
 
 # copy setup script
 COPY ./setup.sh /root/.
+RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc
 
 ENTRYPOINT ["/root/setup.sh"]
 CMD ["bash"]
