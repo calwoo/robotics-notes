@@ -1,0 +1,55 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+        locales \
+        curl \
+        gnupg2 \
+        lsb-release \
+        sudo \
+        git && \
+    locale-gen en_US en_US.UTF-8 && \
+    update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 && \
+    export LANG=en_US.UTF-8 && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository universe && \
+    curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+ENV LANG en_US.UTF-8
+
+# ROS2 environment vars
+ARG ROS_DISTRO="humble"
+ARG ROS_PYTHON_VERSION="3"
+ARG ROS_VERSION="2"
+
+# install ROS 2
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install tzdata && \
+    apt-get install -y \
+        ros-${ROS_DISTRO}-desktop \
+        ros-${ROS_DISTRO}-turtlesim \
+        ros-dev-tools
+
+# install colcon build tool
+RUN apt-get install -y \
+    python3-argcomplete \
+    python3-rosdep \
+    python3-colcon-common-extensions
+
+ENV SHELL=/bin/bash
+ENV DISPLAY=novnc:0.0
+
+# set development workspace
+WORKDIR /root/example_ws/src
+RUN git clone https://github.com/ros2/examples examples -b iron
+WORKDIR /root/ros_ws
+
+# copy setup script
+COPY ./setup_core.sh /root/.
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /root/.bashrc
+
+ENTRYPOINT ["/root/setup_core.sh"]
+CMD ["/bin/bash"]

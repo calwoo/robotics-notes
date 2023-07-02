@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  ros2-core:
+    build:
+      context: ./docker/ros2
+      dockerfile: Dockerfile.ros2core
+      args:
+        - ROS_DISTRO=humble
+        - ROS_PYTHON_VERSION="3"
+        - ROS_VERSION="2"
+    image: calwoo/ros2-humble-core
+    container_name: ros2-core
+    volumes:
+      - ./ros2/src:/root/ros_ws
+    tty: true
+    stdin_open: true
+    networks:
+      - net
+    depends_on:
+      - ros2-websocket-bridge
+  ros2-websocket-bridge:
+    build:
+      context: ./docker/ros2
+      dockerfile: Dockerfile.ros2bridge
+      args:
+        - ROS_DISTRO=humble
+    image: calwoo/ros2-humble-bridge
+    container_name: ros2-ws-bridge
+    ports:
+      - "9090:9090"
+    networks:
+      - net
+  ros2-novnc:
+    image: theasp/novnc:latest
+    container_name: novnc
+    ports:
+      - "8080:8080"
+    environment:
+      - DISPLAY_WIDTH=3000
+      - DISPLAY_HEIGHT=1800
+      - RUN_XTERM=no
+    networks:
+      - net
+
+networks:
+  net:
