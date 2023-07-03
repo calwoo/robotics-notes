@@ -17,17 +17,20 @@ class TurtleSpawner(Node):
         # spawn service
         self.spawn_client = self.create_client(Spawn, "spawn")
         while not self.spawn_client.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("service not available, waiting again...")
+            self.get_logger().info("spawn service not available, waiting again...")
 
         spawn_period = 5.0
         self.spawn_timer = self.create_timer(spawn_period, self.spawn_turtle)
 
         # kill service
-        self.kill_service = self.create_service(CatchTurtle, "kill", self.kill_turtle)
+        self.catch_service = self.create_service(CatchTurtle, "turtle_spawner/catch", self.catch_turtle)
+        self.kill_client = self.create_client(Kill, "kill")
+        while not self.kill_client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info("kill service not available, waiting again...")
 
         # turtle status topic pub
         self.turtles = []
-        self.alive_publisher = self.create_publisher(TurtleArray, "alive_turtles", 10)
+        self.alive_publisher = self.create_publisher(TurtleArray, "turtle_spawner/alive_turtles", 10)
 
         pub_timer_period = 0.5
         self.pub_timer = self.create_timer(pub_timer_period, self.broadcast_turtles)
@@ -60,12 +63,19 @@ class TurtleSpawner(Node):
         }
         self.turtles.append(turtle)
 
-    def kill_turtle(self, request, response):
+    def catch_turtle(self, request, response):
         turtle_name = request.turtle_name
         for turtle in self.turtles:
             if turtle["name"] == turtle_name:
                 # remove turtle
                 self.turtles.remove(turtle)
+
+                # call turtlesim kill service
+                request = Kill.Request()
+                request.name = turtle_name
+                self.kill_client.call_async(request)
+                self.get_logger().info(f"killed turtle: {turtle_name}")
+
                 response.return_code = 1
                 return response
         
