@@ -36,8 +36,12 @@ RUN apt-get update && \
 # install colcon build tool
 RUN apt-get install -y \
     python3-argcomplete \
+    python3-pip \
     python3-rosdep \
     python3-colcon-common-extensions
+
+# python env
+RUN pip3 install setuptools==58.2.0
 
 ENV SHELL=/bin/bash
 ENV DISPLAY=novnc:0.0
