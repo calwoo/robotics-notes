@@ -19,7 +19,7 @@ class TurtleSpawner(Node):
         while not self.spawn_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info("spawn service not available, waiting again...")
 
-        spawn_period = 5.0
+        spawn_period = 3.0
         self.spawn_timer = self.create_timer(spawn_period, self.spawn_turtle)
 
         # kill service
