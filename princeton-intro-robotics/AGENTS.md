@@ -35,6 +35,13 @@ princeton-intro-robotics/
 ├── AGENTS.md
 ├── README.md
 ├── hardware-buying-guide.md
+├── assignments/
+│   ├── README.md
+│   └── assignment-01/
+│       ├── Assignment1.pdf
+│       ├── Lab1.ipynb
+│       ├── README.md
+│       └── env-mae345.yml
 └── notes/
     ├── README.md
     ├── lecture-01-intro-to-robotics.md

@@ -23,6 +23,10 @@ See the [hardware buying guide](hardware-buying-guide.md) for current prices, pu
 
 See the [notes index](notes/README.md) for source links and topic summaries. Maintenance conventions are documented in [AGENTS.md](AGENTS.md).
 
+## Assignments
+
+The [Assignment 1 materials](assignments/README.md) include the official PDF, starter notebook, and environment/setup files from the public Fall 2026 course repository.
+
 ## Scope
 
 These are original study summaries of the public course materials. They are not official Princeton notes, complete lecture transcripts, or solutions to course assignments.
