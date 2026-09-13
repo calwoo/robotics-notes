@@ -44,6 +44,9 @@ princeton-intro-robotics/
 │       └── env-mae345.yml
 └── notes/
     ├── README.md
+    ├── assets/
+    │   ├── lecture-01/
+    │   └── lecture-02/
     ├── lecture-01-intro-to-robotics.md
     └── lecture-02-discrete-motion-planning.md
 ```
@@ -79,6 +82,7 @@ Use equations where they improve precision. Define symbols immediately and keep 
 - Link the official course page, lecture video, and slide deck at the top of every note.
 - Preserve useful citations when transforming or extending existing notes.
 - Paraphrase sources. Short labels, equations, and algorithm names may be retained where necessary.
+- When adding a slide screenshot, use a selected explanatory figure rather than copying a full deck, and caption it with the slide/PDF page number and the official source link.
 - Attribute statements that are specific to the lecture with wording such as "the lecture frames..." or "the slides assume...".
 - Label material not explicit in the lecture as **Supplemental clarification**, **Derived observation**, or **Open question**.
 - Distinguish the lecture's simplified model from a claim about real robots.

@@ -107,6 +107,12 @@ Actuators turn commands into physical forces or motion. For a quadrotor, motors 
 
 **Derived observation:** The diagram is a feedback loop, not a one-way pipeline. Every action changes the physical state that the next sensing-and-computation cycle must interpret.
 
+### Slide illustration: sense-think-act anatomy
+
+![Anatomy of a robotic system: actuators, computation, and sensors](assets/lecture-01/slide-31-anatomy-of-robotic-system.png)
+
+*Source: official Lecture 1 slides, PDF page 31 (slide number 32), [Lecture1.pdf](https://www.dropbox.com/scl/fi/oltefsy9ihq4efgxvtyn9/Lecture1.pdf?dl=0&rlkey=4kc7a1r2pja5z932phyakcq73).*
+
 ## 4. The three technical pillars
 
 ### Planning and control
@@ -173,6 +179,16 @@ The implementation goal is autonomous navigation. Hardware work is pedagogically
 - integration errors can dominate a theoretically correct component.
 
 Teams are used for hardware portions, reflecting the fact that successful robotics work spans mechanics, electronics, software, perception, and control.
+
+### Slide illustrations: hardware implementation
+
+![Crazyflie hardware implementation in the course](assets/lecture-01/slide-39-hardware-implementation.png)
+
+*Source: official Lecture 1 slides, PDF page 39 (slide number 40), [Lecture1.pdf](https://www.dropbox.com/scl/fi/oltefsy9ihq4efgxvtyn9/Lecture1.pdf?dl=0&rlkey=4kc7a1r2pja5z932phyakcq73).*
+
+![Course goal: autonomous Crazyflie navigation](assets/lecture-01/slide-40-autonomous-navigation-goal.png)
+
+*Source: official Lecture 1 slides, PDF page 40 (slide number 41), [Lecture1.pdf](https://www.dropbox.com/scl/fi/oltefsy9ihq4efgxvtyn9/Lecture1.pdf?dl=0&rlkey=4kc7a1r2pja5z932phyakcq73).*
 
 ## 7. Course structure and expectations
 

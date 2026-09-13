@@ -94,6 +94,12 @@ such that $\tau(0)=q_A$ and $\tau(1)=q_B$.
 
 **Supplemental clarification:** Configuration-space obstacles depend on the robot's geometry, not only the world's obstacles. One common construction for a translating rigid robot “inflates” workspace obstacles by the reflected robot shape; the robot can then be treated as a point moving among the inflated obstacles.
 
+### Slide illustration: free configuration space
+
+![Free configuration space and collision regions](assets/lecture-02/slide-17-free-space.png)
+
+*Source: official Lecture 2 slides, PDF page 17, [Lecture2.pdf](https://www.dropbox.com/scl/fi/pnwucnirlwgviqwaj67hl/Lecture2.pdf?dl=0&rlkey=6s2et2apw9rtnvr8x2ke243sp).*
+
 ## 3. Discretizing the planning problem
 
 A continuous space contains infinitely many configurations, so the lecture approximates it with a finite grid. The example uses:
@@ -120,6 +126,12 @@ The lecture labels a vertex $(i,j)=(x,y)=(\text{column},\text{row})$. In its run
 **Collision policy.** A cell should be marked free only under a clearly stated collision test. Testing the center alone can miss a collision involving the robot's body or an edge swept between neighboring cells.
 
 **Derived observation:** The graph-search algorithm can be correct on the discrete graph while the resulting physical path is unsafe. Discretization and collision checking determine whether the graph is a faithful model of the continuous problem.
+
+### Slide illustration: discretization choices
+
+![Uniform grid, four-connectivity, and resolution choices](assets/lecture-02/slide-26-discretization-choices.png)
+
+*Source: official Lecture 2 slides, PDF page 26, [Lecture2.pdf](https://www.dropbox.com/scl/fi/pnwucnirlwgviqwaj67hl/Lecture2.pdf?dl=0&rlkey=6s2et2apw9rtnvr8x2ke243sp).*
 
 ## 4. A common forward-search skeleton
 
@@ -219,6 +231,16 @@ where:
 - $F(x)$ estimates the complete start-to-goal cost through $x$.
 
 The frontier is a priority queue, and `get_vertex()` removes the vertex with smallest $F$.
+
+### Slide illustrations: A* priority and setup
+
+![A* priority combines cost-to-come and cost-to-go](assets/lecture-02/slide-64-astar-key-idea.png)
+
+*Source: official Lecture 2 slides, PDF page 64, [Lecture2.pdf](https://www.dropbox.com/scl/fi/pnwucnirlwgviqwaj67hl/Lecture2.pdf?dl=0&rlkey=6s2et2apw9rtnvr8x2ke243sp).*
+
+![A* setup with Manhattan distance and priority](assets/lecture-02/slide-68-astar-setup.png)
+
+*Source: official Lecture 2 slides, PDF page 68, [Lecture2.pdf](https://www.dropbox.com/scl/fi/pnwucnirlwgviqwaj67hl/Lecture2.pdf?dl=0&rlkey=6s2et2apw9rtnvr8x2ke243sp).*
 
 ### Heuristic requirement
 
