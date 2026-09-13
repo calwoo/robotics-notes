@@ -15,6 +15,20 @@ jupyter lab princeton-intro-robotics/assignments/assignment-01/Lab1.ipynb
 
 In Jupyter, choose the kernel named **Python (Princeton Robotics Assignment 1)**.
 
+## Use it in VS Code
+
+Install the Microsoft **Python** and **Jupyter** extensions if they are not
+already installed. In VS Code:
+
+1. Open this repository (or the `assignment-01` folder).
+2. Run **Python: Select Interpreter** and choose
+   `assignments/assignment-01/.venv/bin/python`.
+3. Open `Lab1.ipynb`, click the kernel picker in the upper-right, and choose
+   **Python (Princeton Robotics Assignment 1)**.
+
+The kernelspec is installed in your user Jupyter directory and points at the
+project-local interpreter, matching the setup used by the `diffusion` project.
+
 The environment uses Python 3.11 and current compatible wheels for the packages
 listed in the public course environment (`numpy`, `scipy`, `sympy`, `matplotlib`,
 `notebook`, `jupyterlab`, `ipykernel`, `opencv-python`, `ipywidgets`, and
@@ -32,11 +46,12 @@ uv venv .venv --python 3.11
 uv pip install --python .venv/bin/python \
   numpy scipy sympy matplotlib notebook jupyterlab ipykernel \
   opencv-python ipywidgets ipympl
-.venv/bin/python -m ipykernel install --sys-prefix \
+.venv/bin/python -m ipykernel install --user \
   --name princeton-intro-robotics-assignment-1 \
   --display-name "Python (Princeton Robotics Assignment 1)"
 ```
 
-The prepared environment keeps its kernel specification inside `.venv` with
-`--sys-prefix`, so it remains self-contained. The `.venv/` directory is
-excluded by the repository's root `.gitignore`.
+The kernelspec contains the absolute path to this checkout's `.venv`. If the
+repository is moved or the venv is recreated at a different path, rerun the
+last command. The `.venv/` directory itself is excluded by the repository's
+root `.gitignore`.
