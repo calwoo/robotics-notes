@@ -41,6 +41,7 @@ princeton-intro-robotics/
 │       ├── Assignment1.pdf
 │       ├── Lab1.ipynb
 │       ├── README.md
+│       ├── UV_SETUP.md
 │       └── env-mae345.yml
 └── notes/
     ├── README.md

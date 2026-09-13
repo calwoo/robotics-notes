@@ -16,3 +16,6 @@ target/
 
 # macOS metadata
 .DS_Store
+
+# Princeton Introduction to Robotics: local Assignment 1 environment
+princeton-intro-robotics/assignments/assignment-01/.venv/

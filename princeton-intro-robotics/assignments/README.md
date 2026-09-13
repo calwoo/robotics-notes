@@ -18,6 +18,7 @@
 - [Lab 1 starter notebook](assignment-01/Lab1.ipynb): coding task to implement A* on a maze.
 - [Course repository README](assignment-01/README.md): environment installation and notebook workflow.
 - [Conda environment file](assignment-01/env-mae345.yml): the public repository's environment specification.
+- [Local `uv` setup](assignment-01/UV_SETUP.md): instructions for the prepared, Git-ignored notebook environment.
 
 The files are a local snapshot of the public materials as of the date above. Check the course page and the [F2026 repository](https://github.com/Princeton-Introduction-to-Robotics/F2026) for revisions before starting work.
 
