@@ -43,6 +43,10 @@ $$
 
 Once the robot is represented as a point in configuration space, the geometric planning problem becomes finding a path in $\mathcal C_{\mathrm{free}}$. The difficulty is that the representation may have many dimensions and the obstacles in configuration space may be complicated.
 
+![Configuration-space obstacle example](assets/lecture-03/slide-19-configuration-space-obstacles.png)
+
+*Source: official Lecture 3 slides, PDF page 19, [Lecture3.pdf](https://www.dropbox.com/scl/fi/5uv2vt76nqj4b32vr4i37/Lecture3.pdf?dl=0&rlkey=nx8jjqjlvmgcqqhb8r1p6okzp).*
+
 ### Inflating obstacles as a special case
 
 For a circular approximation of a robot, collision checking can be viewed equivalently as inflating the physical obstacles by the robot radius and planning for a point. This intuition extends to configuration space, where the forbidden set accounts for the robot's full geometry and orientation. The lecture uses this equivalence to motivate configuration-space obstacles before moving to methods that avoid constructing them explicitly.
@@ -58,6 +62,10 @@ $$
 vertices. This exponential dependence on the number of degrees of freedom is the **curse of dimensionality**. A fine grid may be useful for a two-dimensional toy problem but becomes intractable for articulated robots, rigid bodies with orientation, or high-dimensional systems.
 
 There is a second problem: even if the graph were not too large, explicitly constructing $\mathcal C_{\mathrm{free}}$ or $\mathcal C_{\mathrm{obs}}$ can be expensive. A planner may instead prefer to ask a narrower question—whether a particular candidate configuration or short motion is collision-free.
+
+![Curse of dimensionality in a discretized configuration space](assets/lecture-03/slide-21-curse-of-dimensionality.png)
+
+*Source: official Lecture 3 slides, PDF page 21, [Lecture3.pdf](https://www.dropbox.com/scl/fi/5uv2vt76nqj4b32vr4i37/Lecture3.pdf?dl=0&rlkey=nx8jjqjlvmgcqqhb8r1p6okzp).*
 
 ## 3. RRT design principles
 
@@ -128,11 +136,19 @@ When a newly added vertex enters the goal region, follow parent pointers from th
 
 This is the same bookkeeping idea used by BFS, DFS, and A*: the search structure stores enough ancestry information to reconstruct a path after the terminal condition is met. Unlike A*, however, the RRT's path is generally jagged and is not selected by a global path-cost minimization rule.
 
+![Parent pointers recover an RRT path, which may be jagged](assets/lecture-03/slide-55-path-recovery.png)
+
+*Source: official Lecture 3 slides, PDF page 55, [Lecture3.pdf](https://www.dropbox.com/scl/fi/5uv2vt76nqj4b32vr4i37/Lecture3.pdf?dl=0&rlkey=nx8jjqjlvmgcqqhb8r1p6okzp).*
+
 ## 7. What RRT guarantees—and what it does not
 
 The lecture presents standard RRT as a way to seek a feasible path. It does not claim that the first path is shortest, smooth, or dynamically executable. A feasible geometric path can still violate velocity, acceleration, thrust, or actuator constraints.
 
 **Supplemental clarification:** Under standard assumptions, RRT is commonly described as probabilistically complete: as the number of samples grows, the probability of finding a path approaches one when a suitable path exists. This is an asymptotic statement, not a guarantee for a finite sample budget. RRT* adds rewiring and is designed to approach optimal path cost, while bidirectional RRT grows trees from both start and goal. These variants are named at the end of the lecture but are not developed into algorithms here.
+
+![RRT versus RRT*](assets/lecture-03/slide-58-rrt-vs-rrt-star.png)
+
+*Source: official Lecture 3 slides, PDF page 58, [Lecture3.pdf](https://www.dropbox.com/scl/fi/5uv2vt76nqj4b32vr4i37/Lecture3.pdf?dl=0&rlkey=nx8jjqjlvmgcqqhb8r1p6okzp).*
 
 ## 8. Assumptions, limitations, and common pitfalls
 

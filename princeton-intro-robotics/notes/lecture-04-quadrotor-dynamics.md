@@ -261,6 +261,14 @@ The Lecture 4 slides connect the model to the upcoming RRT hardware lab. Student
 
 *Source: official Lecture 4 slides, PDF page 9, [Lecture4_slides.pdf](https://www.dropbox.com/scl/fi/v8bp2gyhpixill7c70u7q/Lecture4_slides.pdf?dl=0&rlkey=h44i0kp1bpmxk3zdg65gvqu29).*
 
+![Measured drone-cage space used for the RRT lab](assets/lecture-04/slide-10-rrt-lab-space.png)
+
+*Source: official Lecture 4 slides, PDF page 10, [Lecture4_slides.pdf](https://www.dropbox.com/scl/fi/v8bp2gyhpixill7c70u7q/Lecture4_slides.pdf?dl=0&rlkey=h44i0kp1bpmxk3zdg65gvqu29).*
+
+![Lecture safety reminders for operating the quadrotors](assets/lecture-04/slide-13-lab-safety.png)
+
+*Source: official Lecture 4 slides, PDF page 13, [Lecture4_slides.pdf](https://www.dropbox.com/scl/fi/v8bp2gyhpixill7c70u7q/Lecture4_slides.pdf?dl=0&rlkey=h44i0kp1bpmxk3zdg65gvqu29).*
+
 ## 10. Assumptions, limitations, and common pitfalls
 
 - **Planar versus 3D:** The planar equations are a teaching model, not a complete Crazyflie model.
