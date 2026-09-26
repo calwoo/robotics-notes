@@ -26,6 +26,8 @@ Dynamic feasibility, planar and 3D quadrotor models, state-space form, thrust an
 
 Primary materials: [video](https://www.youtube.com/watch?v=upI4KaGawyE), [slides](https://www.dropbox.com/scl/fi/v8bp2gyhpixill7c70u7q/Lecture4_slides.pdf?dl=0&rlkey=h44i0kp1bpmxk3zdg65gvqu29), [notes](https://www.dropbox.com/scl/fi/onuvrtpb64sytgp78towu/Lecture4_notes.pdf?dl=0&rlkey=yo9dpy9jxt7730f0ex3sjdcuw).
 
+Local copy: [Lecture 4 notes PDF](Lecture4_notes.pdf).
+
 ## Planned course sequence
 
 The [course page](https://irom-lab.princeton.edu/intro-to-robotics/) lists future units in geometric planning, dynamics and control, planning with dynamics constraints, estimation/localization/mapping, robot learning, and broader societal topics. A planned title is not treated as a released lecture until public material appears.

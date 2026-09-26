@@ -48,6 +48,7 @@ princeton-intro-robotics/
 │       └── README.md
 └── notes/
     ├── README.md
+    ├── Lecture4_notes.pdf
     ├── assets/
     │   ├── lecture-01/
     │   ├── lecture-02/
