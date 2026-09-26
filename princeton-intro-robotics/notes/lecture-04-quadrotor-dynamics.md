@@ -67,6 +67,10 @@ $$
 
 This model already shows the distinction between a physical input and a desired position: the input is thrust, while position changes only after integrating acceleration over time.
 
+![Planar quadrotor constrained to vertical motion](assets/lecture-04/figure-1b-vertical-quadrotor.png)
+
+*Source: Figure 1(b) in the official Lecture 4 notes, [Lecture4_notes.pdf](https://www.dropbox.com/scl/fi/onuvrtpb64sytgp78towu/Lecture4_notes.pdf?dl=0&rlkey=yo9dpy9jxt7730f0ex3sjdcuw).*
+
 ## 3. Planar quadrotor dynamics
 
 Release the constraint on horizontal motion. The planar quadrotor has three configuration variables:
@@ -104,10 +108,6 @@ The sign convention in the equations depends on the axes and rotor labels in the
 ![Planar quadrotor force and arm geometry](assets/lecture-04/figure-1a-planar-quadrotor.png)
 
 *Source: Figure 1(a) in the official Lecture 4 notes, [Lecture4_notes.pdf](https://www.dropbox.com/scl/fi/onuvrtpb64sytgp78towu/Lecture4_notes.pdf?dl=0&rlkey=yo9dpy9jxt7730f0ex3sjdcuw).*
-
-![Planar quadrotor constrained to vertical motion](assets/lecture-04/figure-1b-vertical-quadrotor.png)
-
-*Source: Figure 1(b) in the official Lecture 4 notes, [Lecture4_notes.pdf](https://www.dropbox.com/scl/fi/onuvrtpb64sytgp78towu/Lecture4_notes.pdf?dl=0&rlkey=yo9dpy9jxt7730f0ex3sjdcuw).*
 
 ### Sanity check at level attitude
 
