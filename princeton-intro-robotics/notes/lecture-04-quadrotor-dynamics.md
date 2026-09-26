@@ -101,9 +101,13 @@ so the rotational equation becomes $\ddot{\theta}=u_2/I$.
 
 The sign convention in the equations depends on the axes and rotor labels in the lecture figure. The important structural facts are that total thrust controls force along the body thrust direction, while differential thrust creates a moment.
 
-![Planar quadrotor force and arm geometry](assets/lecture-04/figure-1-planar-quadrotor.png)
+![Planar quadrotor force and arm geometry](assets/lecture-04/figure-1a-planar-quadrotor.png)
 
-*Source: Figure 1 in the official Lecture 4 notes, [Lecture4_notes.pdf](https://www.dropbox.com/scl/fi/onuvrtpb64sytgp78towu/Lecture4_notes.pdf?dl=0&rlkey=yo9dpy9jxt7730f0ex3sjdcuw).*
+*Source: Figure 1(a) in the official Lecture 4 notes, [Lecture4_notes.pdf](https://www.dropbox.com/scl/fi/onuvrtpb64sytgp78towu/Lecture4_notes.pdf?dl=0&rlkey=yo9dpy9jxt7730f0ex3sjdcuw).*
+
+![Planar quadrotor constrained to vertical motion](assets/lecture-04/figure-1b-vertical-quadrotor.png)
+
+*Source: Figure 1(b) in the official Lecture 4 notes, [Lecture4_notes.pdf](https://www.dropbox.com/scl/fi/onuvrtpb64sytgp78towu/Lecture4_notes.pdf?dl=0&rlkey=yo9dpy9jxt7730f0ex3sjdcuw).*
 
 ### Sanity check at level attitude
 
@@ -257,17 +261,13 @@ in the simplified diagonal form shown in the notes. Together with the Euler-angl
 
 The Lecture 4 slides connect the model to the upcoming RRT hardware lab. Students use the measured obstacle layout of a netted drone space to plan a trajectory. The slides list four drones in G109, three in the SEAS Robotics Lab, spare parts, measuring tape, and safety glasses. They also emphasize wearing safety glasses, staying outside the netted area while a drone operates, taking turns in the space, and treating the hardware carefully. These are course logistics and may change; follow the current lab instructions and staff guidance.
 
-![Lab setup for RRT-based trajectory planning](assets/lecture-04/slide-09-lab-setup.png)
+![Measured drone-cage setup for RRT-based trajectory planning](assets/lecture-04/slide-09-lab-photo.png)
 
 *Source: official Lecture 4 slides, PDF page 9, [Lecture4_slides.pdf](https://www.dropbox.com/scl/fi/v8bp2gyhpixill7c70u7q/Lecture4_slides.pdf?dl=0&rlkey=h44i0kp1bpmxk3zdg65gvqu29).*
 
-![Measured drone-cage space used for the RRT lab](assets/lecture-04/slide-10-rrt-lab-space.png)
+![Drone-cage obstacle space used for the RRT lab](assets/lecture-04/slide-10-lab-space-photo.png)
 
 *Source: official Lecture 4 slides, PDF page 10, [Lecture4_slides.pdf](https://www.dropbox.com/scl/fi/v8bp2gyhpixill7c70u7q/Lecture4_slides.pdf?dl=0&rlkey=h44i0kp1bpmxk3zdg65gvqu29).*
-
-![Lecture safety reminders for operating the quadrotors](assets/lecture-04/slide-13-lab-safety.png)
-
-*Source: official Lecture 4 slides, PDF page 13, [Lecture4_slides.pdf](https://www.dropbox.com/scl/fi/v8bp2gyhpixill7c70u7q/Lecture4_slides.pdf?dl=0&rlkey=h44i0kp1bpmxk3zdg65gvqu29).*
 
 ## 10. Assumptions, limitations, and common pitfalls
 
