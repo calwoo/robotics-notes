@@ -1,5 +1,24 @@
 # Assignment Materials
 
+## Assignment 2 — RRT implementation and hardware deployment
+
+> Course: Princeton ROB 345/549, Introduction to Robotics, Fall 2026
+>
+> Public release checked: 2026-09-26
+>
+> Course page: <https://irom-lab.princeton.edu/intro-to-robotics/>
+>
+> Assignment link: <https://github.com/Princeton-Introduction-to-Robotics/F2026/blob/main/Lab2.ipynb>
+>
+> Coding repository: <https://github.com/Princeton-Introduction-to-Robotics/F2026>
+
+### Downloaded materials
+
+- [Lab 2 notebook](assignment-02/Lab2.ipynb): RRT implementation, measured-cage planning, and Crazyflie hardware deployment.
+- [Assignment 2 guide](assignment-02/README.md): scope, local software notes, and safety reminders.
+
+The public release is a notebook rather than a separate assignment PDF. The notebook contains graded TODOs and hardware instructions; it is preserved here without completed solutions.
+
 ## Assignment 1 — Discrete planning and A*
 
 > Course: Princeton ROB 345/549, Introduction to Robotics, Fall 2026

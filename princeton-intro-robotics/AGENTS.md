@@ -37,19 +37,26 @@ princeton-intro-robotics/
 ├── hardware-buying-guide.md
 ├── assignments/
 │   ├── README.md
-│   └── assignment-01/
-│       ├── Assignment1.pdf
-│       ├── Lab1.ipynb
-│       ├── README.md
-│       ├── UV_SETUP.md
-│       └── env-mae345.yml
+│   ├── assignment-01/
+│   │   ├── Assignment1.pdf
+│   │   ├── Lab1.ipynb
+│   │   ├── README.md
+│   │   ├── UV_SETUP.md
+│   │   └── env-mae345.yml
+│   └── assignment-02/
+│       ├── Lab2.ipynb
+│       └── README.md
 └── notes/
     ├── README.md
     ├── assets/
     │   ├── lecture-01/
-    │   └── lecture-02/
+    │   ├── lecture-02/
+    │   ├── lecture-03/
+    │   └── lecture-04/
     ├── lecture-01-intro-to-robotics.md
-    └── lecture-02-discrete-motion-planning.md
+    ├── lecture-02-discrete-motion-planning.md
+    ├── lecture-03-randomized-planning-rrts.md
+    └── lecture-04-quadrotor-dynamics.md
 ```
 
 Add future notes as:

@@ -20,12 +20,14 @@ See the [hardware buying guide](hardware-buying-guide.md) for current prices, pu
 |---|---|---|---|
 | 1 | Introduction to Robotics | [Read notes](notes/lecture-01-intro-to-robotics.md) | 2026-09-13 |
 | 2 | Discrete Motion Planning | [Read notes](notes/lecture-02-discrete-motion-planning.md) | 2026-09-13 |
+| 3 | Randomized Planning (RRTs) | [Read notes](notes/lecture-03-randomized-planning-rrts.md) | 2026-09-26 |
+| 4 | Quadrotor Dynamics | [Read notes](notes/lecture-04-quadrotor-dynamics.md) | 2026-09-26 |
 
 See the [notes index](notes/README.md) for source links and topic summaries. Maintenance conventions are documented in [AGENTS.md](AGENTS.md).
 
 ## Assignments
 
-The [Assignment 1 materials](assignments/README.md) include the official PDF, starter notebook, and environment/setup files from the public Fall 2026 course repository.
+The [assignment materials](assignments/README.md) include the official Assignment 1 files and the public Assignment 2 RRT/Crazyflie notebook from the Fall 2026 course repository.
 
 ## Scope
 
